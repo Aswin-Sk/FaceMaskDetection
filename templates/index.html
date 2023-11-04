@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mask Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Mask Detection</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".jpg, .jpeg, .png" required>
+        <input type="submit" value="Upload and Test">
+    </form>
+    <div id="output">
+        <h2>Model Output</h2>
+        <img id="uploaded-image" src="{{ image_path }}" alt="Uploaded Image">
+        <p id="result" class="
+        {% if result == 'Mask detected' %}
+            result-mask-detected
+        {% elif result == 'Multiple faces found' %}
+            result-multiple-faces
+        {% elif result == 'No face found' %}
+            result-no-face
+        {% else %}
+            result-mask-not-detected
+        {% endif %}">
+        Result: {{ result }}
+        </p>
+    
+    </div>
+    <script>
+        var resultElement = document.getElementById('result');
+        var imageElement = document.getElementById('uploaded-image');
+        
+        // Set border color based on the result
+        if (resultElement.classList.contains('result-mask-detected')) {
+            imageElement.style.borderColor = 'green';
+        } else if (resultElement.classList.contains('result-mask-not-detected')) {
+            imageElement.style.borderColor = 'red';
+        }
+    </script>
+</body>
+</html>
