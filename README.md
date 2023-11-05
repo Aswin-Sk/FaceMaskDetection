@@ -21,7 +21,7 @@ pip install os numpy matplotlib keras imutils scikit-learn Flask
 ````
 ## Running the application
 ````bash
-git clone https://github.com/yourusername/face-mask-detection.git
+git clone https://github.com/Aswin-Sk/FaceMaskDetection.git
 cd face-mask-detection
 python app.py
 http://localhost:5000
